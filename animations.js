@@ -1,0 +1,15 @@
+export const createAnimations = (scene) => {
+    scene.anims.create({
+        key: 'survivor-walks',
+        frames: scene.anims.generateFrameNumbers('survivor', { start: 1, end: 6 }),
+        frameRate: 12,
+        repeat: -1
+    });
+
+    scene.anims.create({
+        key: 'survivor-idle',
+        frames: scene.anims.generateFrameNumbers('survivor', { start: 8, end: 9 }),
+        frameRate: 5,
+        repeat: -1
+    });
+};
