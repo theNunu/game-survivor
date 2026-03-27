@@ -26,7 +26,7 @@ function preload() {
   this.load.image(
     "streetOne", //<----- id
     "assets/scenery/road&lamps_pale.png",
-    // { frameWidth: 18, frameHeight: 16 },
+    // { frameWidth: 22, frameHeight: 16 },
   );
 
   this.load.spritesheet(
@@ -45,7 +45,7 @@ function preload() {
 function create() {
   console.log("crear");
   
-  this.add.image(10, -60, "streetOne").setOrigin(0, 0).setScale(0.15).setDisplaySize(300, 300);
+  this.add.image(0, -100, "streetOne").setOrigin(0, 0).setScale(0.15).setDisplaySize(340, 340);
 
   createAnimations(this);
 
