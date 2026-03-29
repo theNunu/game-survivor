@@ -4,7 +4,7 @@ export default class Survivor extends Phaser.GameObjects.Sprite {
     scene.add.existing(this);
 
     this.setOrigin(0.5, 1);
-    this.speed = 2;
+    this.speed = 1.5;
     this.keys = scene.input.keyboard.createCursorKeys();
   }
 
@@ -12,7 +12,7 @@ export default class Survivor extends Phaser.GameObjects.Sprite {
     if (this.keys.left.isDown) {
       this.x -= this.speed;
       this.flipX = true; //para que voltee a la derecha
-      this.play("survivor-walks", true);
+       this.play("survivor-walks", true);
     } else if (this.keys.right.isDown) {
       this.x += this.speed;
       this.flipX = false; //para que voltee a la izquierda

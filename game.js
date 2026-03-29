@@ -57,7 +57,7 @@ function create() {
   // 3. Crear instancia del personaje
   this.player = new Survivor(this, 50, 210);
 
-  this.walker = new Walker(this, 50, 220);
+  this.walker = new Walker(this, 10, 230); // x, y del persomaje
 
   // this.keys = this.input.keyboard.createCursorKeys();
 
@@ -68,7 +68,9 @@ function update() {
   // 4. Actualizar el personaje
   if (this.player) this.player.update();
 
-  this.walker
+  // this.walker
+
+  if (this.walker) this.walker.update();
 
   // if (this.walker) this.walker.update();
 }

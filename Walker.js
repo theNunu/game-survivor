@@ -4,43 +4,33 @@ export default class Walker extends Phaser.GameObjects.Sprite {
     scene.add.existing(this);
 
     this.setOrigin(0.5, 1);
-    this.speed = 2;
-    this.keys = scene.input.keyboard.createCursorKeys();
+    this.speed = 0.5; // velocidad en la que se mueve el personaje
+
+    // 1. Creamos una variable para la dirección (1 = derecha, -1 = izquierda)
+    this.direccion = 1;
   }
 
   update() {
-    if (this.keys.left.isDown) {
-      this.x -= this.speed;
-      this.flipX = true; //para que voltee a la derecha
-    //   this.play("survivor-walks", true);
-    } else if (this.keys.right.isDown) {
-      this.x += this.speed;
-      this.flipX = false; //para que voltee a la izquierda
-    //   this.play("survivor-walks", true);
+    // 2. Movimiento automático constante
+    this.x += this.speed * this.direccion;
+
+    // 3. Control de orientación (Flip) según la dirección
+    if (this.direccion === 1) {
+      this.flipX = false; // Mirando a la derecha
+      
+        this.play("walker-walks", true);
     } else {
-    //   this.play("survivor-idle", true);
+      this.flipX = true; // Mirando a la izquierda
+           this.play("walker-walks", true);
     }
 
-    //------
-
-    // Movimiento Vertical (¡Aquí está el cambio!)
-    //  let moving = false;
-    if (this.keys.up.isDown) {
-      this.y -= this.speed; // Restar a Y sube al personaje
-      //  this.flipY = true; 
-        // this.play("survivor-idle", true);
-    //   moving = true;
-    } else if (this.keys.down.isDown) {
-      this.y += this.speed; // Sumar a Y baja al personaje
-        // this.play("survivor-idle", true);
-    //   moving = true;
+    // 4. Lógica de rebote (Ejemplo: límites de la pantalla)
+    // Si toca el borde derecho (800 es un ejemplo) o el izquierdo (0)
+    if (this.x >= this.scene.sys.game.config.width || this.x <= 0) {
+      this.direccion *= -1; // Invierte el movimiento
     }
 
-    // // Control de animaciones unificado
-    // if (moving) {
-    //   this.play("survivor-walks", true);
-    // } else {
-    //   this.play("survivor-idle", true);
-    // }
+    // 5. Opcional: Activa la animación siempre
+    // this.play("survivor-walks", true);
   }
 }
