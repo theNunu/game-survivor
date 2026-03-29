@@ -28,4 +28,11 @@ export const createAnimations = (scene) => {
     repeat: -1,
   });
 
+  //   scene.anims.create({
+  //   key: "walker-animal-walks",
+  //   frames: scene.anims.generateFrameNumbers("walkerAnimal", { start: 1, end: 9 }),
+  //   frameRate: 5,
+  //   repeat: -1,
+  // });
+
 };
