@@ -8,6 +8,27 @@ export default class WalkerAnimal extends Phaser.GameObjects.Sprite {
 
     // 1. Creamos una variable para la dirección (1 = derecha, -1 = izquierda)
     this.direccion = 1;
+
+     // 1. Instanciamos el sonido usando el sistema de audio de la escena
+    this.gritoSound = scene.sound.add("zombieTalking");
+
+    // 2. Iniciamos el temporizador directamente al crearse el zombie
+    this.startSoundTimer(scene);
+  }
+
+    startSoundTimer(scene) {
+    // Usamos el gestor de tiempo de la escena (scene.time)
+    scene.time.addEvent({
+      delay: 4000, // 3 segundos
+      callback: () => {
+        //Verificamos si este zombie específico sigue existiendo y está en pantalla
+        if (this.active) {
+          this.gritoSound.play({ volume: 0.5 }); // Volumen al 50% para no ensordecer
+        }
+      },
+      callbackScope: this, // Mantiene el contexto de esta clase para poder usar 'this' arriba
+      loop: true,
+    });
   }
 
   update() {

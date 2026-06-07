@@ -8,6 +8,27 @@ export default class Walker extends Phaser.GameObjects.Sprite {
 
     // 1. Creamos una variable para la dirección (1 = derecha, -1 = izquierda)
     this.direccion = 1;
+
+    // 1. Instanciamos el sonido usando el sistema de audio de la escena
+    this.gritoSound = scene.sound.add("gritoEnemigo");
+
+    // 2. Iniciamos el temporizador directamente al crearse el zombie
+    this.startSoundTimer(scene);
+  }
+
+  startSoundTimer(scene) {
+    // Usamos el gestor de tiempo de la escena (scene.time)
+    scene.time.addEvent({
+      delay: 7000, // 3 segundos
+      callback: () => {
+        //Verificamos si este zombie específico sigue existiendo y está en pantalla
+        if (this.active) {
+          this.gritoSound.play({ volume: 0.5 }); // Volumen al 50% para no ensordecer
+        }
+      },
+      callbackScope: this, // Mantiene el contexto de esta clase para poder usar 'this' arriba
+      loop: true,
+    });
   }
 
   update() {
@@ -17,11 +38,11 @@ export default class Walker extends Phaser.GameObjects.Sprite {
     // 3. Control de orientación (Flip) según la dirección
     if (this.direccion === 1) {
       this.flipX = false; // Mirando a la derecha
-      
-        this.play("walker-walks", true);
+
+      this.play("walker-walks", true);
     } else {
       this.flipX = true; // Mirando a la izquierda
-           this.play("walker-walks", true);
+      this.play("walker-walks", true);
     }
 
     // 4. Lógica de rebote (Ejemplo: límites de la pantalla)
