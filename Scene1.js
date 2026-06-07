@@ -26,23 +26,23 @@ export default class Scene1 extends Phaser.Scene {
     });
 
     // Cargamos el audio en la escena para que esté disponible en memoria
-    this.load.audio("gritoEnemigo", "/grito-zombie.mp3"); // Asegúrate de que la ruta sea correcta
-    this.load.audio("zombieTalking", "/zombie-talking.mp3"); // Asegúrate de que la ruta sea correcta
+    this.load.audio("gritoEnemigo", "/assets/audio/zombies/grito-zombie.mp3"); // Asegúrate de que la ruta sea correcta
+    this.load.audio("zombieTalking", "/assets/audio/zombies/zombie-talking.mp3"); // Asegúrate de que la ruta sea correcta
   }
 
   create() {
     createAnimations(this);
 
     // TEST DE AUDIO DIRECTO
-    this.input.once('pointerdown', () => {
-        console.log("Clic detectado, intentando reproducir sonido de prueba...");
-        try {
-            this.sound.play('gritoEnemigo', { volume: 1.0 });
-            console.log("Phaser ejecutó el comando .play() sin morir en el intento");
-        } catch (error) {
-            console.error("Error al reproducir desde la escena:", error);
-        }
-    });
+    // this.input.once('pointerdown', () => {
+    //     console.log("Clic detectado, intentando reproducir sonido de prueba...");
+    //     try {
+    //         this.sound.play('gritoEnemigo', { volume: 1.0 });
+    //         console.log("Phaser ejecutó el comando .play() sin morir en el intento");
+    //     } catch (error) {
+    //         console.error("Error al reproducir desde la escena:", error);
+    //     }
+    // });
 
     this.add
       .image(0, -100, "streetOne")
