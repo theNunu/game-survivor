@@ -9,6 +9,7 @@ export default class Scene1 extends Phaser.Scene {
 
   preload() {
     this.load.image("streetOne", "assets/scenery/road&lamps_pale.png");
+    this.load.image("houseOne", "assets/scenery/homeUno/houses_pale.png");
 
     this.load.spritesheet(
       "walkerAnimal",
@@ -46,6 +47,12 @@ export default class Scene1 extends Phaser.Scene {
 
     this.add
       .image(0, -100, "streetOne")
+      .setOrigin(0, 0)
+      .setScale(0.15)
+      .setDisplaySize(340, 350);
+
+      this.add
+      .image(0, -100, "houseOne")
       .setOrigin(0, 0)
       .setScale(0.15)
       .setDisplaySize(340, 350);
